@@ -15,13 +15,14 @@ export class UserDetailsComponent implements OnInit {
   username: string | null = null;
   user: GitHubUser | null = null;
   repos: GitHubRepo[] = [];
+  totalStars: number = 0;
   loading = true;
   error = '';
 
   constructor(
     private route: ActivatedRoute,
     private githubService: GithubService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
