@@ -12,8 +12,7 @@ module.exports = function(config) {
       require('karma-coverage')
     ],
     spec_files: [
-      "**/*[sS]pec.js",
-      "!**/*nospec.js"
+      "**/*.js",
     ],
     client: {
       clearContext: false, // leave Jasmine Spec Runner output visible in browser,
