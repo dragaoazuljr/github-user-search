@@ -1,0 +1,17 @@
+.loading {
+  text-align: center;
+  font-style: italic;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}
+
+.user-details {
+  padding: 20px;
+  img {
+    max-width: 200px;
+    border-radius: 50%;
+  }
+}

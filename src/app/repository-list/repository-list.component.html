@@ -1,0 +1,25 @@
+<div *ngIf="repos.length === 0">No repositories found.</div>
+
+<div class="sorting-options">
+  <label for="sortBy">Sort by:</label>
+  <select id="sortBy" (change)="setSortBy($event)">
+    <option value="name">Name</option>
+    <option value="stargazers_count">Stars</option>
+  </select>
+
+  <label for="sortOrder">Order:</label>
+  <select id="sortOrder" (change)="setSortOrder($event)">
+    <option value="asc">Ascending</option>
+    <option value="desc">Descending</option>
+  </select>
+</div>
+
+<ul>
+  <li *ngFor="let repo of repos">
+    <a [href]="repo.html_url" target="_blank">{{ repo.name }}</a>
+    <p>{{ repo.description }}</p>
+    <p>Stars: {{ repo.stargazers_count }}</p>
+    <p>Language: {{ repo.language }}</p>
+    <p>Last Updated: {{ repo.updated_at | date }}</p>
+  </li>
+</ul>

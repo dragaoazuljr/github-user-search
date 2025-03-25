@@ -1,0 +1,13 @@
+<div class="search-container">
+  <h1>GitHub User Search</h1>
+  <input
+    type="text"
+    [(ngModel)]="username"
+    placeholder="Enter username"
+    (keyup.enter)="onSubmit()"
+  />
+  <button (click)="onSubmit()" [disabled]="loading">
+    {{ loading ? 'Searching...' : 'Search' }}
+  </button>
+  <div *ngIf="error" class="error">{{ error }}</div>
+</div>

@@ -1,0 +1,15 @@
+<div *ngIf="loading" class="loading">Loading user details...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
+
+<div *ngIf="user" class="user-details">
+  <h2>{{ user.name }}</h2>
+  <img [src]="user.avatar_url" alt="Profile Image">
+  <p>Username: {{ user.login }}</p>
+  <p>Bio: {{ user.bio }}</p>
+  <p>Followers: {{ user.followers }}</p>
+  <p>Following: {{ user.following }}</p>
+  <p>Location: {{ user.location }}</p>
+
+  <h3>Repositories</h3>
+  <app-repository-list [repos]="repos"></app-repository-list>
+</div>
