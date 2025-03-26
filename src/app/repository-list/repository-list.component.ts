@@ -17,16 +17,15 @@ export class RepositoryListComponent {
 
   sortRepos() {
     if (!this.repos) return;
+
     this.repos.sort((a, b) => {
       const valueA = a[this.sortBy];
       const valueB = b[this.sortBy];
 
       if (valueA < valueB) {
         return this.sortOrder === 'asc' ? -1 : 1;
-      } else if (valueA > valueB) {
-        return this.sortOrder === 'asc' ? 1 : -1;
       } else {
-        return 0;
+        return this.sortOrder === 'asc' ? 1 : -1;
       }
     });
   }
