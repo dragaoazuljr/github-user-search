@@ -6,6 +6,17 @@ import { GithubService, GitHubUser } from '../services/github.service';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
+/**
+ * Component for searching GitHub users
+ * 
+ * @remarks
+ * This component provides functionality to:
+ * - Search for a GitHub user by username
+ * - Validate username input
+ * - Navigate to user details page
+ * 
+ * @public
+ */
 @Component({
   selector: 'app-search',
   standalone: true,
@@ -14,15 +25,44 @@ import { of } from 'rxjs';
   styleUrl: './search.component.scss'
 })
 export class SearchComponent {
+  /** 
+   * Username input by the user 
+   * @public
+   */
   username = '';
+
+  /** 
+   * Loading state for async operations 
+   * @public
+   */
   loading = false;
+
+  /** 
+   * Error message for failed operations 
+   * @public
+   */
   error = '';
 
+  /**
+   * Constructor with dependency injection
+   * 
+   * @param githubService - Service for fetching GitHub user data
+   * @param router - Angular router for navigation
+   * @public
+   */
   constructor(
     private githubService: GithubService,
     private router: Router
   ) {}
 
+  /**
+   * Handles form submission to search for a GitHub user
+   * 
+   * @remarks
+   * Validates username, fetches user details, and navigates to user page
+   * 
+   * @public
+   */
   onSubmit() {
     // Trim and validate username
     const trimmedUsername = this.username.trim().toLowerCase();
@@ -67,7 +107,14 @@ export class SearchComponent {
       });
   }
 
-  // Optional: Clear error when user starts typing
+  /**
+   * Clears error message when user starts typing
+   * 
+   * @remarks
+   * Optional method to improve user experience
+   * 
+   * @public
+   */
   onInput() {
     if (this.error) {
       this.error = '';
