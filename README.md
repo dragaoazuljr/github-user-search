@@ -69,6 +69,17 @@ src/
 └── styles/                 # Estilos globais
 ```
 
+## Documentação
+
+Para gerar a Documentação completa do projeto utilizando Compodoc, rode:
+
+```bash
+npm run compodoc:serve
+
+```
+
+Acessar a documentação do projeto em `http://localhost:8080`
+
 ## Funcionalidades Detalhadas
 
 ### Busca de Usuários
