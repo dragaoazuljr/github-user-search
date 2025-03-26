@@ -1,25 +1,46 @@
-<div *ngIf="repos.length === 0">No repositories found.</div>
+<div *ngIf="repos.length === 0">Nenhum repositório encontrado.</div>
 
-<div class="sorting-options">
-  <label for="sortBy">Sort by:</label>
-  <select id="sortBy" (change)="setSortBy($event)">
-    <option value="name">Name</option>
-    <option value="stargazers_count">Stars</option>
-  </select>
+<div class="repositories">
+  <div class="sorting-options" *ngIf="showFilters">
+    <label for="filterText">Filtrar por nome:
+      <input 
+        type="text" 
+        id="filterText" 
+        [(ngModel)]="filterText" 
+        (ngModelChange)="filterRepos()"
+        placeholder="Filtrar repositórios"
+      >
+    </label>
 
-  <label for="sortOrder">Order:</label>
-  <select id="sortOrder" (change)="setSortOrder($event)">
-    <option value="asc">Ascending</option>
-    <option value="desc">Descending</option>
-  </select>
+    <label for="sortBy">Ordenar por:
+      <select id="sortBy" [(ngModel)]="sortBy" (ngModelChange)="sortRepos()">
+        <option value="updated_at">Atualização</option>
+        <option value="stargazers_count">Estrelas</option>
+        <option value="name">Nome</option>
+      </select>
+    </label>
+
+    <label for="sortOrder">Ordem:
+      <select id="sortOrder" [(ngModel)]="sortOrder" (ngModelChange)="sortRepos()">
+        <option value="desc">Decrescente</option>
+        <option value="asc">Crescente</option>
+      </select>
+    </label>
+  </div>
+
+  <div *ngIf="filteredRepos.length === 0">Nenhum repositório encontrado.</div>
+
+  <div class="repo-list">
+    <div *ngFor="let repo of filteredRepos" class="repo-item card">
+      <a [href]="repo.html_url" target="_blank" class="repo-name">
+        <h4>{{ repo.name }}</h4>
+      </a>
+      <p>{{ repo.description || 'Sem descrição' }}</p>
+      <div class="repo-stats">
+        <span>⭐ {{ repo.stargazers_count }}</span>
+        <span class="language">{{ repo.language || 'Não especificado' }}</span>
+        <span class="update-date"> {{ repo.updated_at | date:'dd/MM/yyyy' }}</span>
+      </div>
+    </div>
+  </div>
 </div>
-
-<ul>
-  <li *ngFor="let repo of repos">
-    <a [href]="repo.html_url" target="_blank">{{ repo.name }}</a>
-    <p>{{ repo.description }}</p>
-    <p>Stars: {{ repo.stargazers_count }}</p>
-    <p>Language: {{ repo.language }}</p>
-    <p>Last Updated: {{ repo.updated_at | date }}</p>
-  </li>
-</ul>

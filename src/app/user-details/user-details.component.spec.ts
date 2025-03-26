@@ -6,6 +6,7 @@ import { CommonModule } from "@angular/common";
 import { RouterTestingModule } from "@angular/router/testing";
 import { FormsModule } from "@angular/forms";
 import { of, throwError } from 'rxjs';
+import { RepositoryListComponent } from "../repository-list/repository-list.component";
 
 describe('UserDetailsComponent', () => {
   let component: UserDetailsComponent;
@@ -49,7 +50,13 @@ describe('UserDetailsComponent', () => {
     githubServiceSpy.getUserRepos.and.returnValue(of(mockRepos));
 
     TestBed.configureTestingModule({
-      imports: [CommonModule, FormsModule, UserDetailsComponent, RouterTestingModule],
+      imports: [
+        CommonModule, 
+        FormsModule, 
+        UserDetailsComponent, 
+        RouterTestingModule,
+        RepositoryListComponent
+      ],
       providers: [
         { provide: GithubService, useValue: githubServiceSpy },
         {
@@ -101,87 +108,6 @@ describe('UserDetailsComponent', () => {
 
     expect(component.error).toBe('Failed to load repositories.');
     expect(component.loading).toBeFalse();
-  });
-
-  it('should sort repositories by name ascending', () => {
-    component.repos = [...mockRepos];
-    component.originalRepos = [...mockRepos];
-    component.sortBy = 'name';
-    component.sortOrder = 'asc';
-    component.sortRepos();
-
-    expect(component.repos[0].name).toBe('repo-1');
-    expect(component.repos[1].name).toBe('repo-2');
-  });
-
-  it('should sort repositories by name descending', () => {
-    component.repos = [...mockRepos];
-    component.originalRepos = [...mockRepos];
-    component.sortBy = 'name';
-    component.sortOrder = 'desc';
-    component.sortRepos();
-
-    expect(component.repos[0].name).toBe('repo-2');
-    expect(component.repos[1].name).toBe('repo-1');
-  });
-
-  it('should sort repositories by stars ascending', () => {
-    component.repos = [...mockRepos];
-    component.originalRepos = [...mockRepos];
-    component.sortBy = 'stargazers_count';
-    component.sortOrder = 'asc';
-    component.sortRepos();
-
-    expect(component.repos[0].stargazers_count).toBe(10);
-    expect(component.repos[1].stargazers_count).toBe(20);
-  });
-
-  it('should sort repositories by stars descending', () => {
-    component.repos = [...mockRepos];
-    component.originalRepos = [...mockRepos];
-    component.sortBy = 'stargazers_count';
-    component.sortOrder = 'desc';
-    component.sortRepos();
-
-    expect(component.repos[0].stargazers_count).toBe(20);
-    expect(component.repos[1].stargazers_count).toBe(10);
-  });
-
-  it('should sort repositories by update date ascending', () => {
-    component.repos = [...mockRepos];
-    component.originalRepos = [...mockRepos];
-    component.sortBy = 'updated_at';
-    component.sortOrder = 'asc';
-    component.sortRepos();
-
-    expect(component.repos[0].updated_at).toBe('2024-03-25T12:00:00Z');
-    expect(component.repos[1].updated_at).toBe('2024-03-26T12:00:00Z');
-  });
-
-  it('should sort repositories by update date descending', () => {
-    component.repos = [...mockRepos];
-    component.originalRepos = [...mockRepos];
-    component.sortBy = 'updated_at';
-    component.sortOrder = 'desc';
-    component.sortRepos();
-
-    expect(component.repos[0].updated_at).toBe('2024-03-26T12:00:00Z');
-    expect(component.repos[1].updated_at).toBe('2024-03-25T12:00:00Z');
-  });
-
-  it('should handle undefined values in sorting', () => {
-    const reposWithUndefined = [
-      { ...mockRepos[0] },
-      { ...mockRepos[1], description: undefined }
-    ];
-
-    component.repos = [...reposWithUndefined];
-    component.originalRepos = [...reposWithUndefined];
-    component.sortBy = 'description';
-    component.sortOrder = 'asc';
-    component.sortRepos();
-
-    expect(component.repos).toBeDefined();
   });
 
   it('should set repos count on load', () => {

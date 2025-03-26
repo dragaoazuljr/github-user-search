@@ -1,7 +1,7 @@
 @use 'sass:color';
 
 .user-details-page {
-  max-width: 700px;
+  max-width: 800px;
   margin: 50px auto;
   display: flex;
   flex-direction: column;
@@ -136,74 +136,11 @@
     color: var(--text-primary);
     margin-bottom: 15px;
   }
+}
 
-  .repo-filters {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 15px;
-
-    select {
-      background-color: var(--bg-secondary);
-      color: var(--text-primary);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 8px;
-      cursor: pointer;
-    }
-  }
-
-  .repo-list {
-    display: grid;
-    gap: 15px;
-
-    .repo-item {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-
-      .repo-name {
-        text-decoration: none;
-        cursor: pointer;
-      }
-
-      h4 {
-        color: var(--accent-color);
-        font-size: 18px;
-        transition: color 0.3s ease;
-
-        &:hover {
-          color: color.adjust(#3B82F6, $lightness: 10%)
-        }
-      }
-
-      p {
-        color: var(--text-secondary);
-        line-height: 1.4;
-      }
-
-      .repo-stats {
-        display: flex;
-        align-items: center;
-        color: var(--text-secondary);
-        font-size: 14px;
-
-        span:first-child {
-          margin-right: auto; // Empurra os outros elementos para a direita
-        }
-
-        span:not(:first-child) {
-          margin-left: 16px; // Espaçamento entre os elementos da direita
-        }
-
-        .update-date {
-          font-style: italic;
-          opacity: 0.8;
-        }
-
-        .language {
-          font-weight: bold;
-        }
-      }
-    }
-  }
+.card {
+  background-color: var(--bg-secondary);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }

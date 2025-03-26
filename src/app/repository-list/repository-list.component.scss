@@ -1,29 +1,96 @@
-ul {
-  list-style: none;
-  padding: 0;
-}
+@use 'sass:color';
 
-li {
-  margin-bottom: 20px;
-  border: 1px solid #eee;
-  padding: 10px;
+.repositories {
+  .sorting-options {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr 1fr;
+    grid-gap: 10px;
+    margin-bottom: 15px;
 
-  a {
-    font-weight: bold;
-    text-decoration: none;
+    label {
+      display: flex;
+      align-items: center;
+      color: var(--text-secondary);
+      font-size: 14px;
+      gap: 8px;
+    }
+
+    input, select {
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    input {
+      flex-grow: 1;
+      min-width: 200px;
+    }
+  }
+
+  .repo-list {
+    display: grid;
+    gap: 15px;
+
+    .repo-item {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .repo-name {
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      h4 {
+        color: var(--accent-color);
+        font-size: 18px;
+        transition: color 0.3s ease;
+        margin: 0;
+
+        &:hover {
+          color: color.adjust(#3B82F6, $lightness: 10%)
+        }
+      }
+
+      p {
+        color: var(--text-secondary);
+        line-height: 1.4;
+        margin: 0;
+      }
+
+      .repo-stats {
+        display: flex;
+        align-items: center;
+        color: var(--text-secondary);
+        font-size: 14px;
+
+        span:first-child {
+          margin-right: auto; // Empurra os outros elementos para a direita
+        }
+
+        span:not(:first-child) {
+          margin-left: 16px; // Espaçamento entre os elementos da direita
+        }
+
+        .update-date {
+          font-style: italic;
+          opacity: 0.8;
+        }
+
+        .language {
+          font-weight: bold;
+        }
+      }
+    }
   }
 }
 
-.sorting-options {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-
-  label {
-    margin-right: 5px;
-  }
-
-  select {
-    margin-right: 10px;
-  }
+.card {
+  background-color: var(--bg-secondary);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
