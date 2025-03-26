@@ -1,16 +1,90 @@
-<div *ngIf="loading" class="loading">Loading user details...</div>
-<div *ngIf="error" class="error">{{ error }}</div>
+<div class="container user-details-page" *ngIf="user">
+  <div class="user-card card">
+    <div class="user-header">
+      <img [src]="user.avatar_url" alt="{{ user.name || user.login }}'s avatar" class="user-avatar">
+      <div class="user-info">
+        <h2>{{ user.name || user.login }}</h2>
+        <p class="user-username">
+          <a [href]="'https://github.com/' + user.login"
+             target="_blank"
+          >
+            &#64;{{ user.login }}
+          </a>
+        </p>
+        <p class="user-joined">Joined {{ user.created_at | date: 'dd MMM yyyy' }}</p>
+      </div>
+    </div>
 
-<div *ngIf="user" class="user-details">
-  <h2>{{ user.name }}</h2>
-  <img [src]="user.avatar_url" alt="Profile Image">
-  <p>Username: {{ user.login }}</p>
-  <p>Bio: {{ user.bio }}</p>
-  <p>Followers: {{ user.followers }}</p>
-  <p>Following: {{ user.following }}</p>
-  <p>Location: {{ user.location }}</p>
-  <p>Total Stars: {{ totalStars }}</p>
+    <p class="user-bio">
+      {{ user.bio || 'Sem biografia' }}
+    </p>
 
-  <h3>Repositories</h3>
-  <app-repository-list [repos]="repos"></app-repository-list>
+    <div class="user-stats">
+      <div class="stat-item">
+        <span class="stat-label">Repositories</span>
+        <span class="stat-value">{{ reposCount }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Followers</span>
+        <span class="stat-value">{{ user.followers }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Following</span>
+        <span class="stat-value">{{ user.following }}</span>
+      </div>
+    </div>
+
+    <div class="user-links">
+      <div class="link-item" *ngIf="user.twitter_username">
+        <span class="link-icon">🐦</span>
+        <a
+          [href]="'https://twitter.com/' + user.twitter_username"
+          target="_blank"
+        >
+          &#64;{{ user.twitter_username }}
+        </a>
+      </div>
+      <div class="link-item" *ngIf="user.blog">
+        <span class="link-icon">🔗</span>
+        <a
+          [href]="user.blog.startsWith('http') ? user.blog : 'https://' + user.blog"
+          target="_blank"
+        >
+          {{ user.blog }}
+        </a>
+      </div>
+      <div class="link-item" [class.disabled]="!user.location">
+        <span class="link-icon">📍</span>
+        <span>{{ user.location || 'Não disponível' }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="repositories" *ngIf="repos && repos.length">
+    <h3>Repositórios</h3>
+    <div class="repo-filters">
+      <select [(ngModel)]="sortBy" (change)="sortRepos()">
+        <option value="updated_at">Ordenar por Atualização</option>
+        <option value="stargazers_count">Ordenar por Estrelas</option>
+        <option value="name">Ordenar por Nome</option>
+      </select>
+      <select [(ngModel)]="sortOrder" (change)="sortRepos()">
+        <option value="asc">Crescente</option>
+        <option value="desc">Decrescente</option>
+      </select>
+    </div>
+    <div class="repo-list">
+      <div *ngFor="let repo of repos" class="repo-item card">
+        <a [href]="repo.html_url" target="_blank" class="repo-name">
+          <h4>{{ repo.name }}</h4>
+        </a>
+        <p>{{ repo.description || 'Sem descrição' }}</p>
+        <div class="repo-stats">
+          <span>⭐ {{ repo.stargazers_count }}</span>
+          <span class="language">{{ repo.language || 'Não especificado' }}</span>
+          <span class="update-date"> {{ repo.updated_at | date:'dd/MM/yyyy' }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

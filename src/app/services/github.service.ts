@@ -10,11 +10,14 @@ export interface GitHubUser {
   following: number;
   avatar_url: string;
   location: string;
+  blog?: string;
+  twitter_username?: string;
+  created_at: string;
 }
 
 export interface GitHubRepo {
   name: string;
-  description: string;
+  description?: string;
   stargazers_count: number;
   html_url: string;
   language: string;

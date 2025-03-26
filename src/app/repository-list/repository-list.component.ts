@@ -22,6 +22,8 @@ export class RepositoryListComponent {
       const valueA = a[this.sortBy];
       const valueB = b[this.sortBy];
 
+      if (valueA === undefined || valueB === undefined) return 0;
+
       if (valueA < valueB) {
         return this.sortOrder === 'asc' ? -1 : 1;
       } else {

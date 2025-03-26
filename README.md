@@ -1,59 +1,101 @@
-# GithubUserSearch
+# GitHub User Search 🔍
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+## Sobre o Projeto
 
-## Development server
+GitHub User Search é uma aplicação moderna para busca de perfis do GitHub, permitindo visualizar informações detalhadas de usuários e seus repositórios. Desenvolvida com Angular e seguindo as melhores práticas de desenvolvimento.
 
-To start a local development server, run:
+## Funcionalidades
 
+- Busca de usuários do GitHub por username
+- Visualização detalhada do perfil do usuário
+- Listagem e ordenação de repositórios
+  - Por nome
+  - Por número de estrelas
+  - Por data de atualização
+- Design moderno com tema escuro
+- Layout responsivo
+- Links diretos para GitHub, Twitter e blog do usuário
+- Ordenação dinâmica dos repositórios
+- Alta cobertura de testes
+
+## Tecnologias Utilizadas
+
+- Angular 19.2
+- TypeScript
+- RxJS
+- GitHub REST API
+- SASS/SCSS
+- Jasmine/Karma para testes
+
+## Pré-requisitos
+
+- Node.js (v18+)
+- npm (v9+)
+- Angular CLI
+
+## Instalação
+1. Instale as dependências
+```bash
+npm install
+```
+
+2. Execute a aplicação
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+4. Acesse `http://localhost:4200` no seu navegador
 
-## Code scaffolding
+## Scripts Disponíveis
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- `npm start`: Inicia o servidor de desenvolvimento
+- `npm run build`: Gera versão de produção
+- `npm test`: Executa testes unitários
+- `npm run test:coverage`: Executa testes com relatório de cobertura
+- `npm run e2e`: Executa testes end-to-end
 
-```bash
-ng generate component component-name
+## 🏗️ Estrutura do Projeto
+
+```
+src/
+├── app/
+│   ├── search/             # Componente de busca
+│   ├── user-details/       # Componente de detalhes do usuário
+│   ├── repository-list/    # Componente de lista de repositórios
+│   ├── services/           # Serviços da aplicação
+│   └── shared/             # Recursos compartilhados
+├── assets/                 # Recursos estáticos
+└── styles/                 # Estilos globais
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Funcionalidades Detalhadas
 
-```bash
-ng generate --help
-```
+### Busca de Usuários
+- Validação de formato de username
+- Feedback de carregamento
+- Tratamento de erros
 
-## Building
+### Detalhes do Usuário
+- Informações básicas do perfil
+- Estatísticas (seguidores, seguindo, repos)
+- Links para redes sociais
+- Localização
+- Data de entrada no GitHub
 
-To build the project run:
+### Lista de Repositórios
+- Ordenação múltipla
+- Informações detalhadas por repositório
+  - Nome e descrição
+  - Número de estrelas
+  - Linguagem principal
+  - Data da última atualização
+- Links diretos para os repositórios
 
-```bash
-ng build
-```
+## Padrões de Código
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Componentes standalone
+- Lazy loading
+- Tratamento de erros consistente
+- Tipagem forte com TypeScript
+- Testes abrangentes
+- SCSS com variáveis CSS

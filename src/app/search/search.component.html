@@ -1,14 +1,31 @@
-<div class="search-container">
-  <h1>GitHub User Search</h1>
-<label for="username">GitHub Username:</label>
-  <input
-    type="text"
-    [(ngModel)]="username"
-    placeholder="Enter username"
-    (keyup.enter)="onSubmit()"
-  />
-  <button (click)="onSubmit()" [disabled]="loading">
-    {{ loading ? 'Searching...' : 'Search' }}
-  </button>
-  <div *ngIf="error" class="error">{{ error }}</div>
+<div class="container search-page">
+  <div class="search-header">
+    <h1>devfinder</h1>
+  </div>
+
+  <div class="search-container">
+    <div class="search-input-wrapper">
+      <div class="search-icon">🔍</div>
+      <input
+        type="text"
+        [(ngModel)]="username"
+        (keyup.enter)="onSubmit()"
+        (input)="onInput()"
+        placeholder="Buscar usuário do GitHub..."
+        class="input search-input"
+        aria-label="Busca de usuário do GitHub"
+      >
+      <button
+        (click)="onSubmit()"
+        class="btn search-btn"
+        [disabled]="loading"
+      >
+        {{ loading ? 'Buscando...' : 'Buscar' }}
+      </button>
+    </div>
+
+    <div *ngIf="error" class="error-message">
+      {{ error }}
+    </div>
+  </div>
 </div>

@@ -34,7 +34,8 @@ describe('GithubService', () => {
       followers: 100,
       following: 50,
       avatar_url: 'http://example.com/avatar.jpg',
-      location: 'Test Location'
+      location: 'Test Location',
+      created_at: '2024-03-26T12:00:00Z'
     };
 
     service.getUser(username).subscribe(user => {
@@ -86,7 +87,8 @@ describe('GithubService', () => {
         followers: 100,
         following: 50,
         avatar_url: 'http://example.com/avatar1.jpg',
-        location: 'Test Location 1'
+        location: 'Test Location 1',
+        created_at: '2024-03-26T12:00:00Z'
       },
       {
         login: 'testuser2',
@@ -95,7 +97,8 @@ describe('GithubService', () => {
         followers: 200,
         following: 100,
         avatar_url: 'http://example.com/avatar2.jpg',
-        location: 'Test Location 2'
+        location: 'Test Location 2',
+        created_at: '2024-03-26T12:00:00Z'
       }
     ];
 
