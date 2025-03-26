@@ -2,17 +2,17 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { GitHubRepo } from '../services/github.service';
+import { GitHubRepo } from '../interfaces/GitHubRepo.interface';
 
 /**
  * Component for displaying and managing a list of GitHub repositories
- * 
+ *
  * @remarks
  * This component provides functionality to:
  * - Display a list of repositories
  * - Filter repositories by name
  * - Sort repositories by different attributes
- * 
+ *
  * @public
  */
 @Component({
@@ -22,51 +22,51 @@ import { GitHubRepo } from '../services/github.service';
   styleUrl: './repository-list.component.scss'
 })
 export class RepositoryListComponent implements OnChanges {
-  /** 
-   * List of repositories to display 
+  /**
+   * List of repositories to display
    * @public
    */
   @Input() repos: GitHubRepo[] = [];
 
-  /** 
-   * Flag to show or hide repository filters 
+  /**
+   * Flag to show or hide repository filters
    * @public
    */
   @Input() showFilters: boolean = true;
 
-  /** 
-   * Original list of repositories before filtering 
+  /**
+   * Original list of repositories before filtering
    * @private
    */
   originalRepos: GitHubRepo[] = [];
 
-  /** 
-   * Attribute to sort repositories by 
+  /**
+   * Attribute to sort repositories by
    * @public
    */
   sortBy: keyof GitHubRepo = 'updated_at';
 
-  /** 
-   * Sort order for repositories 
+  /**
+   * Sort order for repositories
    * @public
    */
   sortOrder: 'asc' | 'desc' = 'desc';
 
-  /** 
-   * Text used to filter repositories 
+  /**
+   * Text used to filter repositories
    * @public
    */
   filterText: string = '';
 
-  /** 
-   * List of repositories after filtering 
+  /**
+   * List of repositories after filtering
    * @public
    */
   filteredRepos: GitHubRepo[] = [];
 
   /**
    * Lifecycle hook that is called when data-bound properties change
-   * 
+   *
    * @param changes - Object containing current and previous property values
    * @public
    */
@@ -79,10 +79,10 @@ export class RepositoryListComponent implements OnChanges {
 
   /**
    * Filters repositories based on the current filter text
-   * 
+   *
    * @remarks
    * This method filters repositories by their name, case-insensitively
-   * 
+   *
    * @public
    */
   filterRepos() {
@@ -90,7 +90,7 @@ export class RepositoryListComponent implements OnChanges {
       this.filteredRepos = [...this.originalRepos];
     } else {
       const lowerFilterText = this.filterText.toLowerCase();
-      this.filteredRepos = this.originalRepos.filter(repo => 
+      this.filteredRepos = this.originalRepos.filter(repo =>
         repo.name.toLowerCase().includes(lowerFilterText)
       );
     }
@@ -99,10 +99,10 @@ export class RepositoryListComponent implements OnChanges {
 
   /**
    * Sorts the filtered repositories based on the current sort criteria
-   * 
+   *
    * @remarks
    * Supports sorting by date, strings, and numbers with ascending or descending order
-   * 
+   *
    * @public
    */
   sortRepos(): void {
@@ -141,7 +141,7 @@ export class RepositoryListComponent implements OnChanges {
 
   /**
    * Sets the attribute to sort repositories by
-   * 
+   *
    * @param event - Event from the sort attribute selection
    * @public
    */
@@ -152,7 +152,7 @@ export class RepositoryListComponent implements OnChanges {
 
   /**
    * Sets the sort order for repositories
-   * 
+   *
    * @param event - Event from the sort order selection
    * @public
    */

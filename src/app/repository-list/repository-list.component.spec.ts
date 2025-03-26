@@ -1,36 +1,36 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { FormsModule } from "@angular/forms";
 import { RepositoryListComponent } from "./repository-list.component";
-import { GitHubRepo } from "../services/github.service";
+import { GitHubRepo } from "../interfaces/GitHubRepo.interface";
 
 describe('RepositoryListComponent', () => {
   let component: RepositoryListComponent;
   let fixture: ComponentFixture<RepositoryListComponent>;
 
   const mockRepos: GitHubRepo[] = [
-    { 
-      name: 'Repo B', 
-      stargazers_count: 5, 
-      description: 'Description B', 
-      html_url: 'https://github.com/repoB', 
-      language: 'JavaScript', 
-      updated_at: '2023-02-20T00:00:00Z' 
+    {
+      name: 'Repo B',
+      stargazers_count: 5,
+      description: 'Description B',
+      html_url: 'https://github.com/repoB',
+      language: 'JavaScript',
+      updated_at: '2023-02-20T00:00:00Z'
     },
-    { 
-      name: 'Repo A', 
-      stargazers_count: 10, 
-      description: 'Description A', 
-      html_url: 'https://github.com/repoA', 
-      language: 'TypeScript', 
-      updated_at: '2023-01-15T00:00:00Z' 
+    {
+      name: 'Repo A',
+      stargazers_count: 10,
+      description: 'Description A',
+      html_url: 'https://github.com/repoA',
+      language: 'TypeScript',
+      updated_at: '2023-01-15T00:00:00Z'
     },
-    { 
-      name: 'Repo C', 
-      stargazers_count: 3, 
-      description: 'Description C', 
-      html_url: 'https://github.com/repoC', 
-      language: 'Python', 
-      updated_at: '2023-03-25T00:00:00Z' 
+    {
+      name: 'Repo C',
+      stargazers_count: 3,
+      description: 'Description C',
+      html_url: 'https://github.com/repoC',
+      language: 'Python',
+      updated_at: '2023-03-25T00:00:00Z'
     }
   ];
 

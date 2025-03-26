@@ -1,7 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-import { GithubService, GitHubUser, GitHubRepo } from './github.service';
+import { GithubService } from './github.service';
+import { GitHubUser } from '../interfaces/GitHubUser.interface';
+import { GitHubRepo } from '../interfaces/GitHubRepo.interface';
 
 describe('GithubService', () => {
   let service: GithubService;

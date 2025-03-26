@@ -1,12 +1,14 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { Router, ActivatedRoute } from "@angular/router";
 import { UserDetailsComponent } from "./user-details.component";
-import { GithubService, GitHubUser, GitHubRepo } from "../services/github.service";
+import { GithubService } from "../services/github.service";
 import { CommonModule } from "@angular/common";
 import { RouterTestingModule } from "@angular/router/testing";
 import { FormsModule } from "@angular/forms";
 import { of, throwError } from 'rxjs';
 import { RepositoryListComponent } from "../repository-list/repository-list.component";
+import { GitHubUser } from "../interfaces/GitHubUser.interface";
+import { GitHubRepo } from "../interfaces/GitHubRepo.interface";
 
 describe('UserDetailsComponent', () => {
   let component: UserDetailsComponent;
@@ -51,9 +53,9 @@ describe('UserDetailsComponent', () => {
 
     TestBed.configureTestingModule({
       imports: [
-        CommonModule, 
-        FormsModule, 
-        UserDetailsComponent, 
+        CommonModule,
+        FormsModule,
+        UserDetailsComponent,
         RouterTestingModule,
         RepositoryListComponent
       ],

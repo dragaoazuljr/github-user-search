@@ -63,7 +63,8 @@ src/
 │   ├── user-details/       # Componente de detalhes do usuário
 │   ├── repository-list/    # Componente de lista de repositórios
 │   ├── services/           # Serviços da aplicação
-│   └── shared/             # Recursos compartilhados
+│   ├── shared/             # Recursos compartilhados
+│   └── interfaces/         # Interfaces das APIs
 ├── assets/                 # Recursos estáticos
 └── styles/                 # Estilos globais
 ```
