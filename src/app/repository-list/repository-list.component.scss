@@ -7,6 +7,10 @@
     grid-gap: 10px;
     margin-bottom: 15px;
 
+    @media screen and (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+
     label {
       display: flex;
       align-items: center;

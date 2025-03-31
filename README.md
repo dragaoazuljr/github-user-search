@@ -52,7 +52,7 @@ ng serve
 - `npm run build`: Gera versão de produção
 - `npm test`: Executa testes unitários
 - `npm run test:coverage`: Executa testes com relatório de cobertura
-- `npm e2e`: Executa testes end-to-end
+- `npm run e2e`: Executa testes end-to-end
 
 ## 🏗️ Estrutura do Projeto
 
